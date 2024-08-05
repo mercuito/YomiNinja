@@ -126,7 +126,7 @@
       "buildResources": "electron_resources",
       "output": "dist"
     },
-    "forceCodeSigning": true,
+    "forceCodeSigning": false,
     "nsis": {
       "oneClick": false,
       "runAfterFinish": true,

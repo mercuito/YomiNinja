@@ -62,7 +62,7 @@ export class AppController {
 
         if ( !isDev ) {
             startupTimer = setTimeout( () => {
-                console.log('Initialization took too long. Closing the app.');
+                console.log('Initializationzzzzz took too long. Closing the app.');
                 app.quit();
             }, 30_000 );
         }

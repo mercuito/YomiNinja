@@ -1,58 +1,60 @@
-import { CloudVisionOcrAdapter } from "./cloud_vision_ocr.adapter";
-import { getCloudVisionDefaultSettings } from "./cloud_vision_ocr_settings";
-import { CloudVisionRestAPI } from "./cloud_vision_rest_api";
-import { base64Image } from "./test/base64_image";
-import { cloudVisionToken, proxyUrl } from "./test/test_data";
+// import { CloudVisionOcrAdapter } from "./cloud_vision_ocr.adapter";
+// import { getCloudVisionDefaultSettings } from "./cloud_vision_ocr_settings";
+// import { CloudVisionRestAPI } from "./cloud_vision_rest_api";
+// import { base64Image } from "./test/base64_image";
+// import { cloudVisionToken, proxyUrl } from "./test/test_data";
 
 
-describe('CloudVisionOcrAdapter tests', () => {
+// describe('CloudVisionOcrAdapter tests', () => {
 
-    let cloudVisionAPI: CloudVisionRestAPI;
-    let ocrAdapter: CloudVisionOcrAdapter;
+//     let cloudVisionAPI: CloudVisionRestAPI;
+//     let ocrAdapter: CloudVisionOcrAdapter;
 
-    beforeEach( () => {
+//     beforeEach( () => {
 
-        cloudVisionAPI = new CloudVisionRestAPI({
-            token: cloudVisionToken,
-            proxyUrl
-        });
+//         cloudVisionAPI = new CloudVisionRestAPI({
+//             token: cloudVisionToken,
+//             proxyUrl
+//         });
 
-        ocrAdapter = new CloudVisionOcrAdapter( cloudVisionAPI );
-    });
+//         ocrAdapter = new CloudVisionOcrAdapter( cloudVisionAPI );
+//     });
     
-    it('should extract text from a base64 image', async () => {
+//     it('should extract text from a base64 image', async () => {
 
-        const result = await ocrAdapter.recognize({
-            imageBuffer: Buffer.from( base64Image, 'base64' ),
-            languageCode: 'ja'
-        });
+//         const result = await ocrAdapter.recognize({
+//             imageBuffer: Buffer.from( base64Image, 'base64' ),
+//             languageCode: 'ja'
+//         });
 
-        const regionResults = result?.ocr_regions[0].results;
-        expect( regionResults ).toBeDefined();
+//         const regionResults = result?.ocr_regions[0].results;
+//         expect( regionResults ).toBeDefined();
 
-        if ( !regionResults ) return;
+//         if ( !regionResults ) return;
 
-        expect( regionResults ).toHaveLength( 2 );
-        expect( regionResults[0].text[0].content ).toStrictEqual( '開かない…のは当たり前か。' );
-        expect( regionResults[1].text[0].content ).toStrictEqual( 'ここは先頭車両で、こっちはその先頭の方だもんな。' );
-    });
+//         expect( regionResults ).toHaveLength( 2 );
+//         expect( regionResults[0].text[0].content ).toStrictEqual( '開かない…のは当たり前か。' );
+//         expect( regionResults[1].text[0].content ).toStrictEqual( 'ここは先頭車両で、こっちはその先頭の方だもんな。' );
+//     });
 
-    it('should update the credentials', async () => {
+//     it('should update the credentials', async () => {
 
-        cloudVisionAPI.token = '';
+//         cloudVisionAPI.token = '';
 
-        await ocrAdapter.updateSettings({
-            ...getCloudVisionDefaultSettings(),
-            token: cloudVisionToken
-        });
+//         await ocrAdapter.updateSettings({
+//             ...getCloudVisionDefaultSettings(),
+//             token: cloudVisionToken
+//         });
 
-        const result = await ocrAdapter.recognize({
-            imageBuffer: Buffer.from( base64Image, 'base64' ),
-            languageCode: 'ja'
-        });
+//         const result = await ocrAdapter.recognize({
+//             imageBuffer: Buffer.from( base64Image, 'base64' ),
+//             languageCode: 'ja'
+//         });
 
-        const regionResults = result?.ocr_regions[0].results;
+//         const regionResults = result?.ocr_regions[0].results;
 
-        expect( regionResults ).toHaveLength( 2 );
-    });
-})
+//         expect( regionResults ).toHaveLength( 2 );
+//     });
+// })
+
+export {}

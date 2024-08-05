@@ -21,6 +21,7 @@
     "strictPropertyInitialization": false,
     "target": "esnext",
     "outDir": "../main",
+    "sourceMap": true,
     "types": [
       "jest"
     ]
